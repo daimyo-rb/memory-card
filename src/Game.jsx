@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import GameCard from './GameCard.jsx'
 
 function Game() {
   const [imageUrls, setImageUrls] = useState({});
@@ -32,8 +33,9 @@ function Game() {
 
   return <>
     <h1>game</h1>
-    <img src={imageUrls['charizard']}/>
-    <img src={imageUrls['pikachu']}/>
+    <GameCard name="charizard" imageUrl={imageUrls['charizard']}/>
+    <GameCard name="pikachu" imageUrl={imageUrls['pikachu']}/>
+  
   </>
 }
 
