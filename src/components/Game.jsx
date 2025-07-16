@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import GameCard from './GameCard.jsx'
+import '../styles/Game.css'
 
 function Game({currentScore, bestScore, setCurrentScore, setBestScore}) {
   const [orderedPokemon, setOrderedPokemon] = useState([
@@ -72,12 +73,11 @@ function Game({currentScore, bestScore, setCurrentScore, setBestScore}) {
     }
     shuffleCardOrder();
   }
-  return <>
-    <h1>game</h1>
+  return <div className='gameContainer'>
     {orderedPokemon.map((name) => (
       <GameCard onClick={handleCardClick} key={name} name={name} imageUrl={imageUrls[name]}/>
     ))}
-  </>
+  </div>
 }
 
 export default Game
