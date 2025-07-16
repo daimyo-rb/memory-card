@@ -2,10 +2,10 @@ import ScoreInfo from "./ScoreInfo"
 import TitleInstructions from "./TitleInstructions"
 import '../styles/Header.css'
 
-function Header() {
+function Header({currentScore, bestScore}) {
   return <div className="header">
-    <TitleInstructions></TitleInstructions>
-    <ScoreInfo></ScoreInfo>
+    <TitleInstructions/>
+    <ScoreInfo currentScore={currentScore} bestScore={bestScore}/>
   </div>
 }
 
