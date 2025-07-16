@@ -1,7 +1,7 @@
 import '../styles/GameCard.css'
 
-function GameCard({name, imageUrl}) {
-  return <div className='gameCard'>
+function GameCard({name, imageUrl, onClick}) {
+  return <div className='gameCard' onClick={onClick}>
     <img src={imageUrl}/>
     <p>{name}</p>
   </div>

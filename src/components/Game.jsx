@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import GameCard from './GameCard.jsx'
 
 function Game() {
+  const [orderedPokemon, setOrderedPokemon] = useState([
+    'charizard', 'pikachu','lugia',
+    'rayquaza','moltres','jigglypuff',
+    'ekans','blastoise','regice',
+    'beldum','rattata','wailord'
+  ]);
   const [imageUrls, setImageUrls] = useState({});
   async function getPokemonImageUrl(pokemon) {
     try {
@@ -19,12 +25,8 @@ function Game() {
   }
   useEffect(() => {
     async function fetchAllImages() {
-      const pokemons = ['charizard', 'pikachu','lugia',
-        'rayquaza','moltres','jigglypuff',
-        'ekans','blastoise','regice',
-        'beldum','rattata','wailord'];
       const entries = await Promise.all(
-        pokemons.map(async(name) => {
+        orderedPokemon.map(async(name) => {
           const url = await getPokemonImageUrl(name);
           return [name, url];
         })
@@ -33,11 +35,26 @@ function Game() {
     }
     fetchAllImages();
   }, []);
-
+  function shuffleArray(arr) {
+    const shuffled = [...arr];
+    for (let i=shuffled.length-1; i>0; i--) {
+      const j = Math.floor(Math.random() * (i+1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+  function shuffleCardOrder() {
+    const shuffled = shuffleArray(orderedPokemon);
+    setOrderedPokemon(shuffled);
+  }
+  function handleCardClick() {
+    console.log('called');
+    shuffleCardOrder();
+  }
   return <>
     <h1>game</h1>
-    {Object.entries(imageUrls).map(([name, url]) => (
-      <GameCard key={name} name={name} imageUrl={url}/>
+    {orderedPokemon.map((name) => (
+      <GameCard onClick={handleCardClick} key={name} name={name} imageUrl={imageUrls[name]}/>
     ))}
   </>
 }
