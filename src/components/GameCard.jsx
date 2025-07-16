@@ -1,4 +1,4 @@
-import './styles/GameCard.css'
+import '../styles/GameCard.css'
 
 function GameCard({name, imageUrl}) {
   return <div className='gameCard'>
