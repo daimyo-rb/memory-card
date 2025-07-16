@@ -1,0 +1,10 @@
+.titleInstructions {
+  padding: 5px;
+}
+.titleInstructions h1 {
+  font-size: 40px;
+}
+.titleInstructions p {
+  margin-top: 20px;
+  font-size: 14px;
+}
