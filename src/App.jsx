@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import './App.css'
+import Game from './Game.jsx'
+import './styles/App.css'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
       <div>
         Memory card app
       </div>
+      <Game></Game>
     </>
   )
 }
