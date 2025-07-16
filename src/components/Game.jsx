@@ -49,15 +49,15 @@ function Game({currentScore, bestScore, setCurrentScore, setBestScore}) {
     setOrderedPokemon(shuffled);
   }
   function handleOldCardClicked() {
+    if (currentScore > bestScore) { // update bestScore if needed
+      setBestScore(currentScore);
+    }
     setCurrentScore(0); // reset score
     setClickedCardsSet(new Set()); // clear out set
   }
   function handleNewCardClicked(name){
     const newScore = currentScore + 1;
     setCurrentScore(newScore); // increment current score
-    if (newScore > bestScore) {
-      setBestScore(newScore)
-    }
     setClickedCardsSet(prevSet => { // add to set
       const newSet = new Set(prevSet);
       newSet.add(name);
