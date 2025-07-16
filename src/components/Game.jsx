@@ -19,7 +19,10 @@ function Game() {
   }
   useEffect(() => {
     async function fetchAllImages() {
-      const pokemons = ['charizard', 'pikachu'];
+      const pokemons = ['charizard', 'pikachu','lugia',
+        'rayquaza','moltres','jigglypuff',
+        'ekans','blastoise','regice',
+        'beldum','rattata','wailord'];
       const entries = await Promise.all(
         pokemons.map(async(name) => {
           const url = await getPokemonImageUrl(name);
@@ -33,9 +36,9 @@ function Game() {
 
   return <>
     <h1>game</h1>
-    <GameCard name="charizard" imageUrl={imageUrls['charizard']}/>
-    <GameCard name="pikachu" imageUrl={imageUrls['pikachu']}/>
-  
+    {Object.entries(imageUrls).map(([name, url]) => (
+      <GameCard key={name} name={name} imageUrl={url}/>
+    ))}
   </>
 }
 
